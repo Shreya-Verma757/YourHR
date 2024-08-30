@@ -1,0 +1,28 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <h4>All Users</h4>
+    <!-- <form action="/user/new" method="GET">
+        <button>New User</button>
+    </form> -->
+
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
+        <% for(let user of allUser) { %>
+            <a href="/user/<%= user._id %>">
+                <div class="card col" >
+                    <img src="<%= user.image.url %>" class="card-img-top" alt="user_image" style="height: 20rem;">
+                    <div class="card-img-overlay">
+                        
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <b><%= user.name %></b>
+                        <br>
+                      </p>
+                    </div>
+                  </div>
+            </a>
+        <% } %>
+    </div>
+</body>
+
+

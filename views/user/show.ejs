@@ -1,0 +1,30 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <h2>User Details: </h2>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card col-6 offset-3 show-card">
+                <img src="<%= user.image.url %>" class="card-img-top show-img" alt="user_image">
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%= user.name %></b> <br>
+                        <ul>
+                            <li><label for="email"><b>Email:</b></label> <%= user.email %></li>
+                            <li><label for="resumePath"><b>Resume Path:</b></label> <%= user.resumePath %></li>
+                            <li><label for="location"><b>Location:</b></label> <%= user.location %></li>
+                            <li><label for="country"><b>Country:</b></label> <%= user.country %></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <% if(currUser && user.owner._id.equals(currUser._id)) { %>
+                <div class="btns">
+                  <a href=/user/<%= user._id %>/edit class="btn btn-outline-dark offset-3">Edit</a>
+                  <form action="/user/<%= user._id %>?_method=DELETE" method="POST">
+                  <button class="btn btn-outline-dark offset-5">Delete</button>
+                  </form>
+                </div>
+              <% } %>
+        </div>
+    </div>
+</body>

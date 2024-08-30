@@ -1,0 +1,56 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+    <h4>Edit your profile</h4>
+    <div class="row mt-3">
+        <div class="col-8 offset-2">
+            <form action="/user/<%= user._id %>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input class="form-control" type="text" name="user[name]" value="<%= user.name %>" required>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input class="form-control" type="email" name="user[email]" value="<%= user.email %>" required>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <% if (originalImageUrl) { %>
+                        <img src="<%= originalImageUrl %>" alt="user_image">
+                    <% } else { %>
+                        <p>No image uploaded</p>
+                    <% } %>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image URL</label>
+                    <input class="form-control" name="user[image]" type="file">
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input class="form-control" type="text" name="user[password]" value="<%= user.password %>" required>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="resumePath" class="form-label">Resume </label>
+                    <input class="form-control" name="user[resumePath]" type="file" value="<%= user.resumePath %>" required>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input class="form-control" type="text" name="user[location]" value="<%= user.location %>" required>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input class="form-control" type="text" name="user[country]" value="<%= user.country %>" required>
+                </div>
+                <br>
+                <button class="btn btn-dark">Edit</button>
+            </form>
+        </div>
+    </div>  
+
+    <script src="/js/script.js"></script>
+</body>
